@@ -33,13 +33,13 @@ export default function (Vue, {router, head, isClient, appOptions}) {
         context.$nextTick(() => (context.$router.go(-1)))
     }
 
-    Vue.prototype.$setTitle = function (title) {
-        if (title) {
-            document.title = store.state.configuration.htmlTitle + " - " + title
-        } else {
-            document.title = store.state.configuration.htmlTitle
-        }
-    }
+    // Vue.prototype.$setTitle = function (title) {
+    //     if (title) {
+    //         document.title = store.state.configuration.htmlTitle + " - " + title
+    //     } else {
+    //         document.title = store.state.configuration.htmlTitle
+    //     }
+    // }
     Vue.prototype.$share = function (message) {
         if (!message) {
             message = window.location

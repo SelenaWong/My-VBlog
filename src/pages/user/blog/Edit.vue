@@ -9,11 +9,16 @@
                     <el-input v-model="form.description" type="textarea"></el-input>
                 </el-form-item>
                 <el-form-item label="博客正文" prop="content">
-                    <mavon-editor @imgAdd="imgAdd" style="max-height: 500px" ref="md" v-model="form.content" :subfield="false" :toolbars="mavonEditorToolbars"
+                    <ClientOnly>
+                    <mavon-editor @imgAdd="imgAdd" style="max-height: 500px" ref="md" v-model="form.content"
+                                  :subfield="false" :toolbars="mavonEditorToolbars"
                     />
+                    </ClientOnly>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit" :loading="submitButton.loading" :disabled="submitButton.disabled">修改</el-button>
+                    <el-button type="primary" @click="onSubmit" :loading="submitButton.loading"
+                               :disabled="submitButton.disabled">修改
+                    </el-button>
                     <el-button @click="$router.push('/user/blog/main')">返回</el-button>
                 </el-form-item>
             </el-form>
@@ -22,9 +27,10 @@
     </div>
 </template>
 <script>
-    import { mapGetters } from 'vuex'
+    import {mapGetters} from 'vuex'
     import TokenDialog from '../../common/TokenDialog'
     import GistApi from '../../../api/gist'
+
     export default {
         components: {
             TokenDialog
@@ -39,14 +45,14 @@
                 },
                 ruleValidate: {
                     title: [
-                        { required: true, message: '请输入标题', trigger: 'blur' },
-                        { type: 'string', max: 32, message: '标题长度不大于32字符', trigger: 'change' }
+                        {required: true, message: '请输入标题', trigger: 'blur'},
+                        {type: 'string', max: 32, message: '标题长度不大于32字符', trigger: 'change'}
                     ],
                     description: [
-                        { required: true, message: '请输入博客描述', trigger: 'blur' }
+                        {required: true, message: '请输入博客描述', trigger: 'blur'}
                     ],
                     content: [
-                        { required: true, message: '请输博客入正文', trigger: 'blur' }
+                        {required: true, message: '请输博客入正文', trigger: 'blur'}
                     ],
                 },
                 loading: true,
