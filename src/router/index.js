@@ -237,11 +237,11 @@ export const constantRouterMap = [
 
 const router = new Router({
     routes: constantRouterMap,
-    scrollBehavior(to, from, savedPosition) {
-        if (to.meta.scrollTop) {
-            return {x: 0, y: 0}
-        }
-    }
+    // scrollBehavior(to, from, savedPosition) {
+    //     if (to.meta.scrollTop) {
+    //         return {x: 0, y: 0}
+    //     }
+    // }
 })
 //
 router.beforeEach((to, from, next) => {
