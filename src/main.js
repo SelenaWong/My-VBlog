@@ -82,9 +82,6 @@ export default function (Vue, {router, head, isClient, appOptions}) {
         }
     }
 
-
-
     Vue.prototype.$util = util
-
     Vue.config.productionTip = false
 }

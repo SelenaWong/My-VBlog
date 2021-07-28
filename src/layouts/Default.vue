@@ -96,8 +96,16 @@
 
             </el-card>
         </div>
-        <!--       -->
-        <slot/>
+        <section class="main-content">
+            <el-row>
+                <el-col :span="6" style="padding-right:10px">
+                    <sidebar></sidebar>
+                </el-col>
+                <el-col :span="18" style="padding-left:10px">
+                    <slot></slot>
+                </el-col>
+            </el-row>
+        </section>
         <section class="foot">
             <foot></foot>
         </section>
@@ -118,6 +126,7 @@
     import Foot from '../components/Foot'
 
     export default {
+        name: 'Layout',
         components: {
             Sidebar,
             AppMain,
@@ -254,7 +263,6 @@
                 this.$nextTick(() => {
                     document.getElementById('play').blur()
                 })
-
             },
             changeTime(time) {
                 this.$refs.music.currentTime = time

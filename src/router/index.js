@@ -1,17 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Error404 from '../pages/error/Error404'
-import Layout from '../pages/layout/Layout'
 
 import NewMain from '../pages/user/new/Main'
 import SocialMain from '../pages/user/social/Main'
-import SocialDetails from '../pages/user/social/Details'
+import SocialDetails from '../pages/user/social/details/[name]'
 import BlogMain from '../pages/user/blog/Main'
 import BlogAdd from '../pages/user/blog/Add'
-import BlogEdit from '../pages/user/blog/Edit'
-import BlogDetails from '../pages/user/blog/Details'
+import BlogEdit from '../pages/user/blog/edit/[id]'
+import BlogDetails from '../pages/user/blog/details/[id]'
 import ProjectMain from '../pages/user/project/Main'
-import ProjectDetails from '../pages/user/project/Details'
+import ProjectDetails from '../pages/user/project/details/[name]'
 import ReadmeMain from '../pages/user/readme/Main'
 import ConfigureMain from '../pages/user/configure/Main'
 import HelperMain from '../pages/user/helper/Main'
@@ -30,26 +29,17 @@ Vue.use(Router)
 export const constantRouterMap = [
 
     {
-        path: '/user/new',
-        redirect: '/user/new/main',
-        component: Layout,
+        path: '/user/new/main',
+        component: NewMain,
         meta: {
             type: "user",
             icon: 'el-icon-star-off',
             title: '最新动态'
-        },
-        children: [
-            {
-                path: 'main',
-                component: NewMain,
-                meta: { title: '最新动态' }
-            }
-        ]
+        }
     },
     {
-        path: '/user/social',
-        redirect: '/user/social/main',
-        component: Layout,
+        path: '/user/social/main',
+        component: SocialMain,
         meta: {
             type: "user",
             icon: 'el-icon-mobile-phone',
@@ -57,21 +47,21 @@ export const constantRouterMap = [
         },
         children: [
             {
-                path: 'main',
+                path: '/user/social/main',
                 component: SocialMain,
-                meta: { title: '社交圈' }
+                meta: {title: '社交圈'}
             },
             {
-                path: 'details/:name',
+                path: '/user/social/details/:name',
                 component: SocialDetails,
-                meta: { title: '用户资料' }
+                meta: {title: '用户资料'}
             }
         ]
     },
     {
-        path: '/user/blog',
+        path: '/user/blog/main',
         redirect: '/user/blog/main',
-        component: Layout,
+        component: BlogMain,
         meta: {
             type: "user",
             icon: 'el-icon-edit-outline',
@@ -79,31 +69,30 @@ export const constantRouterMap = [
         },
         children: [
             {
-                path: 'main',
+                path: '/user/blog/main',
                 component: BlogMain,
-                meta: { title: '博客列表' }
+                meta: {title: '博客列表'}
             },
             {
-                path: 'add',
+                path: '/user/blog/add',
                 component: BlogAdd,
-                meta: { title: '发表博客' }
+                meta: {title: '发表博客'}
             },
             {
-                path: 'edit/:id',
+                path: '/user/blog/edit/:id',
                 component: BlogEdit,
-                meta: { title: '编辑博客' }
+                meta: {title: '编辑博客'}
             },
             {
                 path: 'details/:id',
                 component: BlogDetails,
-                meta: { title: '博客详情' }
+                meta: {title: '博客详情'}
             }
         ]
     },
     {
-        path: '/user/project',
-        redirect: '/user/project/main',
-        component: Layout,
+        path: '/user/project/main',
+        component: ProjectMain,
         meta: {
             type: "user",
             icon: 'el-icon-service',
@@ -111,71 +100,48 @@ export const constantRouterMap = [
         },
         children: [
             {
-                path: 'main',
+                path: '/user/project/main',
                 component: ProjectMain,
-                meta: { title: '项目列表' }
+                meta: {title: '项目列表'}
             },
             {
-                path: 'details/:name',
+                path: '/user/project/details/:name',
                 component: ProjectDetails,
-                meta: { title: '项目详情' }
+                meta: {title: '项目详情'}
             }
         ]
     },
     {
-        path: '/user/helper',
-        redirect: '/user/helper/main',
-        component: Layout,
+        path: '/user/helper/main',
+        // redirect: '/user/helper/main',
+        component: HelperMain,
         meta: {
             type: "user",
             icon: 'el-icon-printer',
             title: '使用帮助',
             mini: true
-        },
-        children: [
-            {
-                path: 'main',
-                component: HelperMain,
-                meta: { title: '使用帮助' }
-            }
-        ]
+        }
     },
     {
-        path: '/user/readme',
-        redirect: '/user/readme/main',
-        component: Layout,
+        path: '/user/readme/main',
+        // redirect: '/user/readme/main',
+        component: ReadmeMain,
         meta: {
             type: "user",
             icon: 'el-icon-document',
             title: 'README.md'
-        },
-        children: [
-            {
-                path: 'main',
-                component: ReadmeMain,
-                meta: { title: 'README.md' }
-            }
-        ]
+        }
     },
     {
-        path: '/user/configure',
-        redirect: '/user/configure/main',
-        component: Layout,
+        path: '/user/configure/main',
+        component: ConfigureMain,
         meta: {
             type: "user",
             icon: 'el-icon-setting',
             title: '系统配置',
             LoginRequired: true
-        },
-        children: [
-            {
-                path: 'main',
-                component: ConfigureMain,
-                meta: { title: '系统配置' }
-            }
-        ]
+        }
     },
-
 
 
     {
@@ -269,21 +235,19 @@ export const constantRouterMap = [
 ]
 
 
-
-
 const router = new Router({
     routes: constantRouterMap,
-    // scrollBehavior(to, from, savedPosition) {
-    //     if (to.meta.scrollTop) {
-    //         return { x: 0, y: 0 }
-    //     }
-    // }
+    scrollBehavior(to, from, savedPosition) {
+        if (to.meta.scrollTop) {
+            return {x: 0, y: 0}
+        }
+    }
 })
 //
 router.beforeEach((to, from, next) => {
-    Vue.prototype.$setTitle(to.meta.title)
+    // Vue.prototype.$setTitle(to.meta.title)
     next()
 })
 //
 //
- export default router
+export default router
