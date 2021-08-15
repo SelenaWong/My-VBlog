@@ -36,7 +36,7 @@
                             <el-form-item label="文字颜色">
                                 <el-color-picker v-model="configure.fontColor"></el-color-picker>
                             </el-form-item>
-                            <div v-if="!configure.useBackgroundImage">
+                            <div v-show="!configure.useBackgroundImage">
                                 <el-row>
                                     <el-col :span="3">
                                         <el-form-item label="背景颜色">
@@ -60,7 +60,7 @@
                                     </div>
                                 </el-form-item>
                             </div>
-                            <div v-if="configure.useBackgroundImage">
+                            <div v-show="configure.useBackgroundImage">
                                 <el-form-item label="背景图片">
                                     <el-upload action="" :auto-upload="false" drag>
                                         <i class="el-icon-upload"></i>

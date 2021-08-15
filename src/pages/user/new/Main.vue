@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <div style="min-height: 600px" v-loading="loading">
-            <el-card shadow="never" style="min-height: 400px" v-if="blog.id">
+            <el-card shadow="never" style="min-height: 400px" v-show="blog.id">
                 <div slot="header">
                     <span>{{blog.title}}</span>
                 </div>
@@ -15,7 +15,7 @@
                 <div v-html="blog.content" class="markdown-body" style="padding-top: 20px"></div>
             </el-card>
             <el-card shadow="never" style="margin-bottom: 20px;padding: 20px 0px 20px 0px;text-align: center"
-                     v-if="!blog.id">
+                     v-show="!blog.id">
                 <font style="font-size: 30px;color:#dddddd ">
                     <b>没有更新 ╮(๑•́ ₃•̀๑)╭</b>
                 </font>

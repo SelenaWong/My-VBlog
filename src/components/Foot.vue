@@ -4,8 +4,8 @@
             <el-col :span="10">
                 <div>
                     © 2018 GitHub-Laziji&emsp;&emsp;
-                    <a href="https://github.com/GitHub-Laziji" target="_blank">Profile</a>&emsp;&emsp;
-                    <a href="https://github.com/GitHub-Laziji/vblog" target="_blank">VBlog</a>
+                    <g-link to="https://github.com/GitHub-Laziji" target="_blank">Profile</g-link>&emsp;&emsp;
+                    <g-link to="https://github.com/GitHub-Laziji/vblog" target="_blank">VBlog</g-link>
                 </div>
             </el-col>
             <el-col :span="4">
@@ -15,9 +15,9 @@
             </el-col>
             <el-col :span="10">
                 <div style="float: right;">
-                    <a href="https://developer.github.com" target="_blank">GitHub-API</a>&emsp;&emsp;
-                    <a href="https://cn.vuejs.org/" target="_blank">Vue.js</a>&emsp;&emsp;
-                    <a href="http://element.eleme.io/" target="_blank">Element</a>
+                    <g-link to="https://developer.github.com" target="_blank">GitHub-API</g-link>&emsp;&emsp;
+                    <g-link to="https://cn.vuejs.org/" target="_blank">Vue.js</g-link>&emsp;&emsp;
+                    <g-link to="http://element.eleme.io/" target="_blank">Element</g-link>
 
                 </div>
             </el-col>

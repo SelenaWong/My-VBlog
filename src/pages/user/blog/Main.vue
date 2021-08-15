@@ -10,9 +10,9 @@
                 </el-button>
             </el-card>
 
-            <div v-if="blogs&&blogs.length>0">
+            <div v-show="blogs&&blogs.length>0">
                 <el-card shadow="hover" v-for="(item,index) in blogs" :key="'p'+index" style="margin-bottom: 20px"
-                         v-if="!item.hide">
+                         v-show="!item.hide">
                     <div slot="header">
                         <el-row>
                             <el-col :span="16">
@@ -27,9 +27,9 @@
                                     <el-button @click="$share('/user/blog/details/'+item.id)" style="padding: 3px 0"
                                                type="text" icon="el-icon-share"></el-button>
                                     <el-button @click="editBlog(index)" style="padding: 3px 0" type="text"
-                                               icon="el-icon-edit" v-if="token"></el-button>
+                                               icon="el-icon-edit" v-show="token"></el-button>
                                     <el-button @click="deleteBlog(index)" style="padding: 3px 0" type="text"
-                                               icon="el-icon-delete" v-if="token"></el-button>
+                                               icon="el-icon-delete" v-show="token"></el-button>
                                 </div>
                             </el-col>
                         </el-row>
@@ -51,7 +51,7 @@
             </div>
 
             <el-card shadow="never" style="margin-bottom: 20px;padding: 20px 0px 20px 0px;text-align: center"
-                     v-if="!blogs||blogs.length==0">
+                     v-show="!blogs||blogs.length==0">
                 <font style="font-size: 30px;color:#dddddd ">
                     <b>还没有博客 (╯°Д°)╯︵ ┻━┻</b>
                 </font>

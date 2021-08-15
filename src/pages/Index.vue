@@ -19,7 +19,7 @@
             title: 'Hello, world!'
         },
         created() {
-            this.$router.push('/user/new/main')
+           this.$router.push('/user/new/main')
         }
     }
 </script>

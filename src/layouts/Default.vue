@@ -16,7 +16,7 @@
             <h1 class="project-name">{{blogTitle}}</h1>
             <h2 class="project-tagline">{{blogDescribe}}</h2>
             <g-link :to="'https://github.com/'+githubUsername" class="btn" target="_blank">GitHub主页</g-link>
-            <g-link to="https://github.com/GitHub-Laziji/vblog" class="btn" target="_blank" v-if="!mini">博客源码</g-link>
+            <g-link to="https://github.com/GitHub-Laziji/vblog" class="btn" target="_blank" v-show="!mini">博客源码</g-link>
         </section>
         <div style="position:relative;  z-index:2;margin: auto;margin-top:-30px;width:64rem;">
             <el-card shadow="never" :body-style="{ padding: '0px' }">
@@ -29,7 +29,7 @@
                                 <el-menu-item index="#githubHome">github主页</el-menu-item>
                                 <el-menu-item index="#blog">其他博客</el-menu-item>
                             </el-submenu>
-                            <el-submenu index="#webSites" v-if="webSites.length>0">
+                            <el-submenu index="#webSites" v-show="webSites.length>0">
                                 <template slot="title">其他网站</template>
                                 <el-menu-item :index="'#webSites-'+index" v-for="(item,index) in webSites"
                                               :key="'#webSites'+index">{{item.name}}
@@ -63,10 +63,10 @@
                             </el-col>
                         </el-row>
 
-                        <audio ref="music" loop autoplay v-if="audioAutoPlay">
+                        <audio ref="music" loop autoplay v-show="audioAutoPlay">
                             <source :src="audioUrl" type="audio/mpeg">
                         </audio>
-                        <audio ref="music" loop v-else>
+                        <audio ref="music" loop v-show="!audioAutoPlay">
                             <source :src="audioUrl" type="audio/mpeg">
                         </audio>
                     </el-col>
@@ -173,7 +173,7 @@
         },
         watch: {
             '$refs.music.currentTime': function () {
-                console.log(this.$refs.music.currentTime)
+                //console.log(this.$refs.music.currentTime)
             }
         },
         mounted() {

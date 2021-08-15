@@ -8,9 +8,9 @@
                            circle></el-button>
             </el-card>
 
-            <div v-if="projects&&projects.length>0">
+            <div v-show="projects&&projects.length>0">
                 <el-card shadow="hover" v-for="(item,index) in projects" :key="'pro'+index" style="margin-bottom: 20px"
-                         v-if="!item.hide">
+                         v-show="!item.hide">
                     <div slot="header">
                         <el-row>
                             <el-col :span="16">
@@ -54,7 +54,7 @@
                                 {{item.forksCount}}
                             </el-col>
                             <el-col :span="8" style="text-align: right;">
-                                <el-tag size="small" type="danger" v-if="item.license">{{item.license}}</el-tag>
+                                <el-tag size="small" type="danger" v-show="item.license">{{item.license}}</el-tag>
                                 <el-tag size="small" type="success">{{item.language}}</el-tag>
                             </el-col>
                         </el-row>
@@ -69,7 +69,7 @@
             </div>
 
             <el-card shadow="never" style="margin-bottom: 20px;padding: 20px 0px 20px 0px;text-align: center"
-                     v-if="!projects||projects.length==0">
+                     v-show="!projects||projects.length==0">
                 <font style="font-size: 30px;color:#dddddd ">
                     <b>还没有开源项目 (╯°Д°)╯︵ ┻━┻</b>
                 </font>

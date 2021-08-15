@@ -25,10 +25,10 @@ export default {
         let worldDate = new Date(arr[0], arr[1] - 1, arr[2], arr[3], arr[4], arr[5])
         let localDate = new Date(worldDate.getTime() + 8 * 60 * 60 * 1000)
         return formatNum(localDate.getFullYear()) + "-"
-            + formatNum((localDate.getMonth() + 1)) + "-" 
-            + formatNum(localDate.getDate()) + " " 
-            + formatNum(localDate.getHours()) + ":" 
-            + formatNum(localDate.getMinutes()) + ":" 
+            + formatNum((localDate.getMonth() + 1)) + "-"
+            + formatNum(localDate.getDate()) + " "
+            + formatNum(localDate.getHours()) + ":"
+            + formatNum(localDate.getMinutes()) + ":"
             + formatNum(localDate.getSeconds())
     },
     guid() {
@@ -128,7 +128,7 @@ export default {
         return windowSize
     },
     addHttp(url){
-        return (url.match(/https?:\/\//i)?'':'https://') + url
+        return (url?.match(/https?:\/\//i)?'':'https://') + url
     }
 
 }

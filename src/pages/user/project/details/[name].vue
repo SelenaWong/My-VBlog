@@ -47,7 +47,7 @@
                         </el-col>
                         <el-col :span="8" style="text-align: right">
 
-                            <el-tag size="small" type="danger" v-if="project.license">{{project.license}}</el-tag>
+                            <el-tag size="small" type="danger" v-show="project.license">{{project.license}}</el-tag>
                             <el-tag size="small" type="success">{{project.language}}</el-tag>
                         </el-col>
 
@@ -55,9 +55,9 @@
 
 
                 </div>
-                <div v-html="project.content" v-if="project.content" class="markdown-body"
+                <div v-html="project.content" v-show="project.content" class="markdown-body"
                      style="padding-top: 20px"></div>
-                <div v-if="!project.content" style="padding: 20px 0px 20px 0px;text-align: center">
+                <div v-show="!project.content" style="padding: 20px 0px 20px 0px;text-align: center">
                     <font style="font-size: 30px;color:#dddddd ">
                         <b>还没有介绍 (╯°Д°)╯︵ ┻━┻</b>
                     </font>

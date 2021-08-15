@@ -5,7 +5,7 @@ import store from '../store/index'
 
 const service = axios.create({
     baseURL: "https://api.github.com",
-    timeout: 15000
+    timeout: 15000,
 })
 
 service.interceptors.request.use(
@@ -17,6 +17,8 @@ service.interceptors.request.use(
                 sp = "&"
             }
             config.url = config.url + sp + "access_token=" + token
+            config.headers.post['Authorization']= `token `+token
+            config.headers.get['Authorization']= `token `+token
         }
         return config
     },

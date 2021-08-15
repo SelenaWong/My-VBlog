@@ -92,7 +92,7 @@
                 'token',
             ])
         },
-        mounted() {
+         mounted() {
             if (!this.token) {
                 this.$nextTick(() => {
                     this.$message({

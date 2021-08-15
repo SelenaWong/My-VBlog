@@ -5,7 +5,7 @@
                 <el-tabs v-model="activeTab" type="card" @tab-click="onSelect">
                     <el-tab-pane :label="'粉丝 '+followersTotal" name="followers" style="padding: 5px">
                         <div v-loading="followers.loading">
-                            <div v-if="followers.list.length">
+                            <div v-show="followers.list.length">
                                 <el-row style="min-height: 200px; ">
                                     <el-col :span="8" v-for="(item,index) in followers.list" :key="'followers'+index"
                                             style="padding: 10px">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div style="min-height: 300px;margin-bottom: 20px;padding: 20px 0px 20px 0px;text-align: center"
-                                 v-else>
+                                 v-show="!following.list.length">
                                 <font style="font-size: 30px;color:#dddddd ">
                                     <b>(￢_￢) 没有一个粉丝</b>
                                 </font>
@@ -42,7 +42,7 @@
                     </el-tab-pane>
                     <el-tab-pane :label="'关注 '+followingTotal" name="following" style="padding: 5px">
                         <div v-loading="following.loading">
-                            <div v-if="following.list.length">
+                            <div v-show="following.list.length">
                                 <el-row style="min-height: 200px; ">
                                     <el-col :span="8" v-for="(item,index) in following.list" :key="'following'+index"
                                             style="padding: 10px">
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div style="min-height: 300px;margin-bottom: 20px;padding: 20px 0px 20px 0px;text-align: center"
-                                 v-else>
+                                 v-show="!following.list.length">
                                 <font style="font-size: 30px;color:#dddddd ">
                                     <b>(￢_￢) 还没有关注一个人</b>
                                 </font>
